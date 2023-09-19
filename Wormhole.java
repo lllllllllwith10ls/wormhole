@@ -39,12 +39,18 @@ public class Wormhole extends AbstractDomain {
     public void paintBG(Viewport V, Mo T) {
 	Mo visiblerim = T.comp(this.rim);
 	if (V.isDotOnScreen(visiblerim, 0.5)) {
+		System.out.println(this.position);
 	    if (otherside != null) {
 		otherside.parent.paintBG(V, T.comp(otherside.transform), otherside);
 	    }
 	    else {
 		V.drawDot(visiblerim, Color.black);
 	    }
+	    onDraw();
+	    otherside.onDraw();
 	}
     }
+    @Override
+	public void onDraw() {
+	}
 }

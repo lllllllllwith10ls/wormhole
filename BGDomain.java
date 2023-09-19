@@ -53,14 +53,20 @@ public class BGDomain extends AbstractDomain {
 	}
 
 	if (visible) {
-	    for (AbstractDomain child : children) {
+		HashSet<AbstractDomain> children2 = new HashSet<>(children);
+	    for (AbstractDomain child : children2) {
 		if (child != fromchild) {
 		    child.paintBG(V, T);
 		}
-		else if (parent != null) {
+	    }
+	    if (parent != null) {
 		    parent.paintBG(V, T, this);
 		}
-	    }
 	}
     }
+
+	@Override
+	public void onDraw() {
+		return;
+	}
 }
